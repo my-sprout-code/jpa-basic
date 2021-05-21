@@ -1,13 +1,16 @@
-package hellojpa;
+package hellojpa.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Member {
+public class Team {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "TEAM_ID")
     private Long id;
+
+    @Column(name = "TEAM_NAME")
     private String name;
 
     public Long getId() {
