@@ -1,22 +1,23 @@
 package hellojpa.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Member {
+public class Member extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
 
-
-    @Column(name = "MEMBER_NAME", nullable = false)
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
+    @Embedded
+    private Address address;
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -34,11 +35,19 @@ public class Member {
         this.name = name;
     }
 
-    public Team getTeam() {
-        return team;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setTeam(Team team) {
-        this.team = team;
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }
