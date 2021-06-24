@@ -1,5 +1,6 @@
 package me.kwj1270.study.jpabasic;
 
+import me.kwj1270.study.jpabasic.item.Book;
 import me.kwj1270.study.jpabasic.order.Order;
 import me.kwj1270.study.jpabasic.orderitem.OrderItem;
 
@@ -28,12 +29,10 @@ public class JpaBasicApplication {
 	}
 
 	private static void businessLogic(EntityManager entityManager) {
-		Order order = new Order();
-		entityManager.persist(order);
-
-		OrderItem orderItem = new OrderItem();
-		orderItem.setOrder(order);
-		entityManager.persist(orderItem);
+		Book book = new Book();
+		book.setName("JPA");
+		book.setAuthor("김우재");
+		entityManager.persist(book);
 	}
 
 }

@@ -1,15 +1,19 @@
 package me.kwj1270.study.jpabasic.item;
 
 import me.kwj1270.study.jpabasic.category.Category;
+import me.kwj1270.study.jpabasic.util.BaseEntity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Item {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "DTYPE")
+public abstract class Item extends BaseEntity {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ITEM_ID")
     private Long id;
 
