@@ -1,12 +1,14 @@
-package hellojpa.domain;
+package me.kwj1270.study.jpabasic.orderitem;
+
+import me.kwj1270.study.jpabasic.item.Item;
+import me.kwj1270.study.jpabasic.order.Order;
 
 import javax.persistence.*;
 
 @Entity
-public class OrderItem extends BaseEntity{
+public class OrderItem {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
 
@@ -20,6 +22,9 @@ public class OrderItem extends BaseEntity{
 
     private int orderPrice;
     private int count;
+
+    public OrderItem() {
+    }
 
     public Long getId() {
         return id;

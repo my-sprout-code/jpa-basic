@@ -1,15 +1,15 @@
-package hellojpa.domain;
+package me.kwj1270.study.jpabasic.item;
+
+import me.kwj1270.study.jpabasic.category.Category;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@DiscriminatorColumn(name = "DTYPE")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Entity
-public abstract class Item extends BaseEntity{
+public class Item {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ITEM_ID")
     private Long id;
 
@@ -26,14 +26,6 @@ public abstract class Item extends BaseEntity{
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
     }
 
     public String getName() {
