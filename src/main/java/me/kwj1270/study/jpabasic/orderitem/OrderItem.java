@@ -2,11 +2,12 @@ package me.kwj1270.study.jpabasic.orderitem;
 
 import me.kwj1270.study.jpabasic.item.Item;
 import me.kwj1270.study.jpabasic.order.Order;
+import me.kwj1270.study.jpabasic.util.BaseEntity;
 
 import javax.persistence.*;
 
 @Entity
-public class OrderItem {
+public class OrderItem extends BaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ORDER_ITEM_ID")

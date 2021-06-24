@@ -3,6 +3,7 @@ package me.kwj1270.study.jpabasic.order;
 import me.kwj1270.study.jpabasic.delivery.Delivery;
 import me.kwj1270.study.jpabasic.member.Member;
 import me.kwj1270.study.jpabasic.orderitem.OrderItem;
+import me.kwj1270.study.jpabasic.util.BaseEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ORDERS")
-public class Order {
+public class Order extends BaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ORDER_ID")
@@ -37,6 +38,7 @@ public class Order {
     public Order() {
     }
 
+
     public Long getId() {
         return id;
     }
@@ -51,6 +53,14 @@ public class Order {
 
     public void setMember(Member member) {
         this.member = member;
+    }
+
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
     }
 
     public List<OrderItem> getOrderItems() {
@@ -75,10 +85,5 @@ public class Order {
 
     public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
-    }
-
-    public void addOrderItem(OrderItem orderItem) {
-        orderItem.setOrder(this);
-        this.orderItems.add(orderItem);
     }
 }

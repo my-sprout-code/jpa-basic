@@ -1,13 +1,14 @@
 package me.kwj1270.study.jpabasic.category;
 
 import me.kwj1270.study.jpabasic.item.Item;
+import me.kwj1270.study.jpabasic.util.BaseEntity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Category {
+public class Category extends BaseEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "CATEGORY_ID")
